@@ -25,8 +25,8 @@ pip install -r requirements.txt
 # add app to INSTALLED_APPS and project urls.py
 cd $PROJECT_NAME
 SECRET_KEY=`python -c 'import random; print "".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)") for i in range(50)])'`
-sed -i.bak "s/# 'app_name'/'$APP_NAME'/g" settings.py
-sed -i.bak "s/SECRET_KEY = ''/SECRET_KEY ='$SECRET_KEY'/g" settings.py
-rm settings.py.bak
-sed -i.bak "s/#url(r'^', include('app_name.urls'))/url(r'^', include('$APP_NAME.urls'))/g" urls.py
-rm urls.py.bak
+sed -i.tmp "s/# 'app_name'/'$APP_NAME'/g" settings.py
+sed -i.tmp "s/SECRET_KEY = ''/SECRET_KEY ='$SECRET_KEY'/g" settings.py
+rm settings.py.tmp
+sed -i.tmp "s/#url(r'^', include('app_name.urls'))/url(r'^', include('$APP_NAME.urls'))/g" urls.py
+rm urls.py.tmp
