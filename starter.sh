@@ -22,3 +22,5 @@ django-admin.py startapp --template=https://github.com/charlon/django-adaptive-a
 pip install -r requirements.txt
 
 #TODO: add app to INSTALLED_APPS and project urls.py
+cd $PROJECT_NAME
+sed "s/# 'app_name'/'$APP_NAME'/g" settings.py > settings.py
