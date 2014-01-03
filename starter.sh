@@ -21,6 +21,10 @@ django-admin.py startapp --template=https://github.com/charlon/django-adaptive-a
 
 pip install -r requirements.txt
 
-#TODO: add app to INSTALLED_APPS and project urls.py
+# add app to INSTALLED_APPS and project urls.py
+#TODO: set a SECRET_KEY that is unique
 cd $PROJECT_NAME
-sed "s/# 'app_name'/'$APP_NAME'/g" settings.py > settings.py
+sed -i.bak "s/# 'app_name'/'$APP_NAME'/g" settings.py
+rm settings.py.bak
+sed -i.bak "s/#url(r'^', include('app_name.urls'))/url(r'^', include('$APP_NAME.urls'))/g" urls.py
+rm urls.py.bak
